@@ -44,9 +44,11 @@ La comunicacíon de datos entre componentes fue quizás mi mayor challenge.
 ## Status 🚧
 Users renderizados a partir de una API extern. ✅
 
-Pop up emergente de vista detalle. ✅
+Borrado de usuarios ✅ 
 
-Borrado de usuarios. [WIP] 🚧
+Pop up emergente de vista detalle.  
+    - [pop up emerge con los datos de usuario] ✅  
+    - [bug con el id del detalle ] 🚧
 
 Formulario para añadir users ❌
 

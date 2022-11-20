@@ -40,10 +40,8 @@
         <span>{{catchPhrase}}</span>      
         <span>{{bs}}</span> 
       </li>
-       <li class="list-buttons">
-          <ElButton color="#5c84ab" :icon="Delete" plain="false" circle/>
-          <ElButton   @click="togglePopup()" color="#5c84ab"> volver atrás </ElButton>
-       </li>  
+      <ElButton @click="togglePopup()" color="#5c84ab"> volver atrás </ElButton>
+      
       </ul>
      </div>
     </section>
@@ -124,9 +122,8 @@ import 'element-plus/dist/index.css';
     background: white;
     padding: 32px;
   }
-  .list-buttons {
-    justify-content: space-between;
-    flex-direction: row;
+  ElButton {
+    margin: 10%;
   }
   label {
     color: $mainColor;

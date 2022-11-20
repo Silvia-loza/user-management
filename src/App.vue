@@ -1,12 +1,12 @@
 <template>
-  <section v-for ="dato in data" :key="dato.id">
+  <section v-for ="(dato, index) in data" :key="index">
     <SingleCard 
     :userid = "dato.id"
     :name="dato.name"
     :username="dato.username"
     :email="dato.email"
     :togglePopup="() => tooglePopup('buttonTrigger')"
-    :eliminar="() => eliminar(dato.id)"
+    :eliminar="() => eliminar(index)"
     />
   </section>
 
@@ -58,35 +58,14 @@ export default {
    const popupTriggers = ref({ 
      buttonTrigger: false
     });
-  const tooglePopup = (trigger, id) => {
+  const tooglePopup = (trigger) => {
     popupTriggers.value[trigger] = !popupTriggers.value[trigger]
-    this.userid = id;
+   
   };
- // const eliminar = (id) => {
-   // console.log(id)
-  //  console.log(show)
-    // let indexBorrado
-    // console.log(this.data)
-    // for (let user of this.data){
-      // if(user.id == id) {
-        //  indexBorrado = this.data.indexOf(user.id)   
-        //  console.log(this.data)
-        // console.log(indexBorrado)
-        // this.data = this.data.splice(indexBorrado,1)
-        // console.log("soy eliminar")     
-      //  }   
-    //  } 
-     
-    //console.log("soy eliminar") 
-     
-     
- //}
-
   return  {
     PopUp,
     popupTriggers,
-    tooglePopup,
-    // eliminar
+    tooglePopup
     
 }
   
@@ -107,32 +86,21 @@ computed () {},
  },
  methods: {
  // asyncronus function that fetches the data from api, then sent to data and looped in v-for in template
- async getUsers () {
-   const res = await fetch('https://jsonplaceholder.typicode.com/users')
-   const data = await res.json()
-   console.log('data del componente my-cards')
-   console.log(data)
-   this.data = data
+   async getUsers () {
+      const res = await fetch('https://jsonplaceholder.typicode.com/users')
+      const data = await res.json()
+      console.log('data del componente my-cards')
+      console.log(data)
+      this.data = data
   },
 
   popUpToggle () {
-    this.show = !this.show
+      this.show = !this.show
   },
 
-    eliminar (id)  {
-      console.log(id)
-      console.log('funcion normal wliminar')
-      console.log(this.data)
-      console.log(typeof(this.data))
-      console.log(this.data[1])
-      console.log(typeof(this.data))
-      this.data.splice( 1, 1)
-  // for (let user of this.data){
-    //  if(user.id == id) {
-  //  let indexBorrado = this.data.indexOf(user.id)
-      //  this.data.splice(indexBorrado,1)
-      // }
-    //  }
+  eliminar (index)  {
+      this.data.splice(index , 1)
+      console.log('Elemento borrado')
   }
  }
 }
